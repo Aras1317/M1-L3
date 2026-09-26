@@ -98,7 +98,7 @@ async def pokemon_savas(ctx):
         sira += 1
 
     kazanan = pikachu if pikachu.hayatta_mi() else charizard
-    await ctx.send(f"\n **SAVAŞ BİTTİ!** Kazanan: **{kazanan.isim}** 🎉")
+    await ctx.send(f"\n **SAVAŞ BİTTİ!** Kazanan: **{kazanan.isim}** ")
 
 
 # --- 4. YÖNETİCİ KOMUTLARI ---
