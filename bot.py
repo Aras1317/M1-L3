@@ -55,7 +55,7 @@ async def on_message(message):
         if not message.author.guild_permissions.administrator:
             await message.delete()
             await message.channel.send(
-                f"⚠️ {message.author.mention}, sunucuda izinsiz link veya reklam paylaşmak yasaktır!",
+                f" {message.author.mention}, sunucuda izinsiz link veya reklam paylaşmak yasaktır!",
                 delete_after=5
             )
             return
@@ -67,11 +67,11 @@ async def on_message(message):
 @bot.command(name="savas", help="Pikachu ve Charizard arasında Pokémon savaşını başlatır.")
 async def pokemon_savas(ctx):
     # Pokémon Nesnelerinin Oluşturulması
-    pikachu = Pokemon(isim="Pikachu ⚡", can=90, guc=18, seviye=5)
-    charizard = Pokemon(isim="Charizard 🔥", can=110, guc=15, seviye=5)
+    pikachu = Pokemon(isim="Pikachu ", can=90, guc=18, seviye=5)
+    charizard = Pokemon(isim="Charizard ", can=110, guc=15, seviye=5)
 
     await ctx.send(
-        f"⚔️ **POKÉMON SAVAŞI BAŞLIYOR!** ⚔️\n"
+        f" **POKÉMON SAVAŞI BAŞLIYOR!** \n"
         f"**{pikachu.isim}** (Can: {pikachu.can} | Seviye: {pikachu.seviye}) **VS** "
         f"**{charizard.isim}** (Can: {charizard.can} | Seviye: {charizard.seviye})\n"
         f"─────────────────────────────"
@@ -87,18 +87,18 @@ async def pokemon_savas(ctx):
 
         hasar, kritik = saldiran.saldir(hedef)
 
-        mesaj = f"🥊 **{saldiran.isim}**, {hedef.isim}'e **{hasar}** hasar verdi!"
+        mesaj = f" **{saldiran.isim}**, {hedef.isim}'e **{hasar}** hasar verdi!"
         if kritik:
-            mesaj += " 🎯 **KRİTİK VURUŞ!**"
+            mesaj += "  **KRİTİK VURUŞ!**"
         
-        mesaj += f"\n❤️ **{hedef.isim}** Kalan Can: `{hedef.can}/{hedef.max_can}`"
+        mesaj += f"\n **{hedef.isim}** Kalan Can: `{hedef.can}/{hedef.max_can}`"
 
         await ctx.send(mesaj)
         await asyncio.sleep(2)  # Tur aralarında 2 saniye bekleme (heyecan katmak için)
         sira += 1
 
     kazanan = pikachu if pikachu.hayatta_mi() else charizard
-    await ctx.send(f"\n🏆 **SAVAŞ BİTTİ!** Kazanan: **{kazanan.isim}** 🎉")
+    await ctx.send(f"\n **SAVAŞ BİTTİ!** Kazanan: **{kazanan.isim}** 🎉")
 
 
 # --- 4. YÖNETİCİ KOMUTLARI ---
@@ -109,7 +109,7 @@ async def ban(ctx, uye: discord.Member, *, sebep="Kural ihlali"):
         await uye.ban(reason=sebep)
         await ctx.send(f"{uye.mention} sunucudan yasaklandı. Sebep: {sebep}")
     except discord.Forbidden:
-        await ctx.send("❌ Bu kullanıcıyı yasaklayamıyorum. Gerekli izinlere sahip değilim.")
+        await ctx.send(" Bu kullanıcıyı yasaklayamıyorum. Gerekli izinlere sahip değilim.")
 
 
 bot.run(TOKEN)
